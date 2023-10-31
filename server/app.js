@@ -1,6 +1,10 @@
 const express = require('express');
 const config = require('./config');
+
 const productRouter = require('./routers/product');
+const userRouter = require('./routers/user');
+const orderRouter = require('./routers/order');
+
 const connectDB = require('./db/mongoose');
 
 const app = express();
@@ -16,6 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/views/home'));
 
 app.use('/api/v1', productRouter);
+app.use('/api/v1', userRouter);
+app.use('/api/v1', orderRouter);
 
 app.get('/', (req, res) => {
   res.send('hello pm2 wow');
@@ -23,7 +29,11 @@ app.get('/', (req, res) => {
 
 // 에러 핸들러 추가
 app.use((err, req, res, next) => {
-  console.log(err);
+  console.log('에러 핸들러 함수입니다.');
+  res.json({
+    status: 404,
+    message: err && err.message,
+  });
 });
 
 app.listen(config.host.port, () => {
