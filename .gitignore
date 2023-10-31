@@ -3,7 +3,9 @@ node_modules
 client/node_modules
 server/node_modules
 ### dotenv ###
-
+/server/.env
+/client/.env
+client/dist
 ### macOS ###
 # General
 .DS_Store
