@@ -1,5 +1,6 @@
 const express = require('express');
 const config = require('./config');
+const productRouter = require('./routers/product');
 
 const app = express();
 
@@ -9,6 +10,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // 정적파일 연결
 app.use(express.static(__dirname + '/views/home'));
+
+app.use('/api/v1', productRouter);
 
 app.get('/', (req, res) => {
   res.send('hello pm2 wow');
