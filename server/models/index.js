@@ -12,6 +12,6 @@ exports.User = mongoose.model('User', userSchema);
 exports.Order = mongoose.model('Order', orderSchema);
 exports.OrderItem = mongoose.model('OrderItem', orderItemSchema);
 exports.Dog = mongoose.model('Dog', dogSchema);
-exports.Product = mongoose.model('Item', productSchema);
+exports.Product = mongoose.model('Product', productSchema);
 exports.Suggestion = mongoose.model('Suggestion', suggestionSchema);
 exports.Category = mongoose.model('Category', categorySchema);

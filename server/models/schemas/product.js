@@ -49,7 +49,7 @@ const productSchema = new Schema({
     type: Boolean,
   },
   // 신상여부
-  new: {
+  isNewArrival: {
     type: Boolean,
   },
   // 제품 업로드 날짜
