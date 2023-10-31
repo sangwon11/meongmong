@@ -30,36 +30,28 @@ const userSchema = new Schema({
     required: true,
   },
   // 회원탈퇴 여부
-  // 가입:1, 탈퇴:2
   useyn: {
-    type: Number,
-    default: 1,
+    type: Boolean,
+    required: true,
   },
   // 유저 이름
   name: {
     type: String,
     required: true,
   },
+  // 관리자 여부
+  isAdmin: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
   // 우편번호
   zipCode: {
     type: String,
-    required: true,
   },
   // 주소
   address: {
     type: String,
-    required: true,
-  },
-  // 소셜 로그인 시에
-  social: {
-    google: {
-      id: String,
-      accessToken: String,
-    },
-    facebook: {
-      id: String,
-      accessToken: String,
-    },
   },
 });
 

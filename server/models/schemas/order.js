@@ -60,8 +60,44 @@ const orderSchema = new Schema({
   },
   // 구매날짜
   createdAt: {
-    type: String,
+    type: Date,
+    default: Date.now,
+  },
+  // 수정날짜
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+  // 배송비
+  deliveryFee: {
+    type: Number,
+  },
+  // 1: 배송전, 2: 배송중, 3: 배송완료
+  result: {
+    type: Number,
     required: true,
+    default: 1,
+  },
+  recipient: {
+    name: {
+      type: String,
+      required: true,
+    },
+    // 우편번호
+    zipCode: {
+      type: String,
+      required: true,
+    },
+    // 주소
+    address: {
+      type: String,
+      required: true,
+    },
+    // 전화번호
+    phone: {
+      type: Number,
+      required: true,
+    },
   },
 });
 
