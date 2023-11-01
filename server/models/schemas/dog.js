@@ -16,7 +16,9 @@ const dogSchema = new Schema({
   // 대, 중, 소형견
   size: {
     type: String,
+    enum: ['초소형견', '소형견', '중형견', '대형견', '초대형견'],
     required: true,
+    default: '소형견',
   },
   // 나이
   age: {
