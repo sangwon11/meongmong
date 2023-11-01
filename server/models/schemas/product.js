@@ -30,21 +30,18 @@ const productSchema = new Schema(
     desc: {
       type: String,
       required: true,
+      trim: true,
     },
     // 제품 간략설명
     summary: {
       type: String,
+      trim: true,
     },
     // 가격
     price: {
       type: Number,
       required: true,
     },
-    // 재고수량
-    // amount: {
-    //   type: Number,
-    //   required: true,
-    // },
     // 할인여부
     discount: {
       type: Boolean,
@@ -52,6 +49,11 @@ const productSchema = new Schema(
     // 신상여부
     isNewArrival: {
       type: Boolean,
+    },
+    // 재고 수량
+    quantity: {
+      type: Number,
+      required: true,
     },
   },
   {

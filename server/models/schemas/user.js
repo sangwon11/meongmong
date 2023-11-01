@@ -8,6 +8,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      trim: true,
     },
     // 아이디
     uid: {
@@ -50,14 +51,19 @@ const userSchema = new Schema(
     address: {
       type: String,
     },
-    // 
+    orderId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Order',
+      required: true,
+    },
+    //
     // shippingAddress: [
     //   {
     //     type: Schema.Types.ObjectId,
     //     ref: 'ShippingAddressSchema',
     //   },
     // ],
-    // // 
+    // //
     // shippingAddress: [ShippingAddressSchema],
   },
   {

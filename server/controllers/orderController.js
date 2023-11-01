@@ -5,7 +5,21 @@ exports.getAllOrders = async (req, res, next) => {};
 exports.getOrderById = async (req, res, next) => {};
 
 exports.createOrder = async (req, res, next) => {
+  const order = req.body;
   
+  try {
+    await orderService.createOrder(order);
+
+    res.status(200).json({
+      status: 200,
+      message: '상품 주문 성공',
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 500,
+      message: '서버 오류 입니다.',
+    });
+  }
 };
 
 exports.updateOrder = async (req, res, next) => {
