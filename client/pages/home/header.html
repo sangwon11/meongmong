@@ -1,32 +1,25 @@
 <div id="top">
-  <header
-    class="fixed top-0 w-full h-24 p-10 flex justify-between items-center bg-white"
-  >
-    <div class="flex items-center">
-      <h1 class="w-48 h-9 ml-24 font-bold text-center leading-9 text-lg">
-        멍뭉이들
-      </h1>
-      <div class="relative w-96 h-11 ml-72">
-        <input
-          class="w-full h-full border rounded-full p-3 text-lg outline-none"
-          type="text"
-        />
-      </div>
+  <header class="w-full h-20 place-items-center header pr-9 pl-9 fixed gap-10 flex justify-between bg-white">
+
+    <h1 class="logo">멍뭉이들</h1>
+    <div class="input_wrap w-[800px] ">
+      <input type="text" class="border-b-2 border rounded" />
     </div>
 
-    <div class="flex items-center ml-24">
-      <div class="w-24 h-9 font-bold text-center leading-9">
-        <button class="hover:text-gray-400">로그인</button>
-      </div>
 
-      <div class="w-24 h-9 font-bold text-center leading-9 mr-2">
-        <button class="hover:text-gray-400">회원가입</button>
-      </div>
-      <div class="w-24 h-9 text-center leading-9 text-lg">
-        <button class="hover:text-gray-400">
-          <img src="/client/public/images/cart.svg" alt="cart" />
-        </button>
-      </div>
+  <div class="flex space-x-8">
+    <div class="sign_up">
+      <button>로그인</button>
     </div>
-  </header>
+
+    <div class="register">
+      <button>회원가입</button>
+    </div>
+    <div class="cart">
+      <button>
+        <img src="/images/cart.svg" alt="cart" />
+      </button>
+    </div>
+  </div>
+</header>
 </div>
