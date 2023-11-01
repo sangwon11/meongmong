@@ -13,17 +13,10 @@ const dogSchema = new Schema({
     type: String,
     required: true,
   },
-  species: {
-    // 견종
-    breed: {
-      type: String,
-      required: true,
-    },
-    // 대, 중, 소형견
-    size: {
-      type: String,
-      required: true,
-    },
+  // 대, 중, 소형견
+  size: {
+    type: String,
+    required: true,
   },
   // 나이
   age: {

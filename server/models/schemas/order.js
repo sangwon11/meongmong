@@ -32,31 +32,29 @@ const orderSchema = new Schema({
     },
   },
   // 유저 관련
-  user: {
-    // 유저 이메일
-    email: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
-    // 유저 아이디
-    uid: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
-    // 우편번호
-    zipCode: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
-    // 주소
-    address: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
+  // 유저 이메일
+  email: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  // 유저 아이디
+  uid: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  // 우편번호
+  zipCode: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  // 주소
+  address: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
   },
   // 구매날짜
   createdAt: {
@@ -73,8 +71,9 @@ const orderSchema = new Schema({
     type: Number,
   },
   // 1: 배송전, 2: 배송중, 3: 배송완료
-  result: {
-    type: Number,
+  status: {
+    type: String,
+    enum: ['배송전', '배송중', '배송완료'],
     required: true,
     default: 1,
   },

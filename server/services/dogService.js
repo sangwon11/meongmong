@@ -16,7 +16,7 @@ exports.getDogById = async (id) => {
       return error;
     }
 
-    return { status: 200, message: `${dog} was found Successfully.` };
+    return dog;
   } catch (err) {
     throw new Error('서버 오류 입니다.');
   }
@@ -30,8 +30,9 @@ exports.createDog = async (dog) => {
 };
 
 exports.updateDog = async (id, dog) => {
+  console.log('dog', dog);
   try {
-    const res = await models.Dog.updateOne({ id }, { dog });
+    const res = await models.Dog.updateOne({ id }, { ...dog });
     console.log('res', res);
     return res;
   } catch (error) {

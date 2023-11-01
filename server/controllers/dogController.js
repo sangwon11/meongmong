@@ -34,7 +34,7 @@ exports.createDog = async (req, res, next) => {
 
     res.status(200).json({
       status: 200,
-      message: `${dog.name}멍뭉이 정보 등록 성공`,
+      message: '등록 성공',
     });
   } catch (error) {
     res.status(500).json({
@@ -45,12 +45,15 @@ exports.createDog = async (req, res, next) => {
 };
 
 exports.updateDog = async (req, res, next) => {
-  const dog = req.body;
+  const { id } = req.params;
+  const { name, size, age } = req.body;
+
+  await dogService.updateDog(id, { name, size, age });
 
   try {
     res.json({
       status: 200,
-      message: `${dog.name}멍뭉이 등록정보 업데이트 성공`,
+      message: '수정 성공',
     });
   } catch (err) {
     next(err);
@@ -60,10 +63,12 @@ exports.updateDog = async (req, res, next) => {
 exports.deleteDog = async (req, res, next) => {
   const { id } = req.params;
 
+  await dogService.deleteDog(id);
+
   try {
     res.json({
       status: 200,
-      message: `${id}멍뭉이 등록정보 삭제 성공`,
+      message: '삭제 성공',
     });
   } catch (err) {
     next(err);
