@@ -1,4 +1,5 @@
 //header markup data include
+import '../../index.css';
 
 function asyncMarkupData() {
   const allElements = document.getElementsByTagName('*');
