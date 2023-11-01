@@ -15,12 +15,12 @@ exports.createUser = async (req, res, next) => {
   const user = req.body;
 
   try {
-    const result = await userService.createUser({
+    const status = await userService.createUser({
       ...user,
       phone: parseInt(user.phone),
     });
 
-    res.status(201).json(result);
+    res.status(201).json(status);
   } catch (err) {
     next(err);
   }

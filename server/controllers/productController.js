@@ -39,14 +39,14 @@ exports.updateProduct = async (req, res, next) => {
   const { id } = req.params;
   const body = req.body;
 
-  const result = await productService.updateProduct(id, body);
+  const status = await productService.updateProduct(id, body);
 
-  res.json(result);
+  res.json(status);
 };
 exports.deleteProduct = async (req, res, next) => {
   const { id } = req.params;
 
-  const result = await productService.deleteProduct(id);
+  const status = await productService.deleteProduct(id);
 
-  res.json(result);
+  res.json(status);
 };

@@ -7,6 +7,7 @@ const dogSchema = require('./schemas/dog');
 const productSchema = require('./schemas/product');
 const suggestionSchema = require('./schemas/suggestion');
 const categorySchema = require('./schemas/category');
+const shippingAddressSchema = require('./schemas/category');
 
 exports.User = mongoose.model('User', userSchema);
 exports.Order = mongoose.model('Order', orderSchema);
@@ -15,3 +16,9 @@ exports.Dog = mongoose.model('Dog', dogSchema);
 exports.Product = mongoose.model('Product', productSchema);
 exports.Suggestion = mongoose.model('Suggestion', suggestionSchema);
 exports.Category = mongoose.model('Category', categorySchema);
+exports.ShippingAddress = mongoose.model(
+  'ShippingAddress',
+  shippingAddressSchema,
+);
+
+this.Order.create({ orderId: 1534 });
