@@ -8,7 +8,6 @@ exports.getAllUsers = async () => {
 exports.getUserById = async (_id) => {
   const user = await models.User.findOne({ _id });
 
-  console.log(user);
   return user;
 };
 
