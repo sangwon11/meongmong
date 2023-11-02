@@ -27,6 +27,13 @@ exports.getProductById = async (req, res, next) => {
   }
 };
 
+exports.getProductByCategoryName = async (req, res, next) => {
+  const { name } = req.params;
+
+  const product = await productService.getProductByCategoryName(name);
+  res.status(200).json({ products: product });
+};
+
 exports.createProduct = async (req, res, next) => {
   try {
     const { name, desc, category, img_url, price } = req.body;

@@ -5,6 +5,7 @@ const productRouter = require('./routers/product');
 const userRouter = require('./routers/user');
 const orderRouter = require('./routers/order');
 const dogRouter = require('./routers/dog');
+const gategoryRouter = require('./routers/category');
 
 const connectDB = require('./db/mongoose');
 
@@ -24,6 +25,7 @@ app.use('/api/v1', productRouter);
 app.use('/api/v1', userRouter);
 app.use('/api/v1', orderRouter);
 app.use('/api/v1', dogRouter);
+app.use('/api/v1', gategoryRouter);
 
 app.get('/', (req, res) => {
   res.send('hello pm2 wow');

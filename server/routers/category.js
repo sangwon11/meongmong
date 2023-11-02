@@ -4,7 +4,7 @@ const categoryController = require('../controllers/categoryController');
 const router = Router();
 
 // 전체 카테고리 조회
-router.get('/categories', categoryController.getAllCategorys);
+router.get('/categories', categoryController.getAllCategory);
 
 // 카테고리 상품 조회
 router.get('/categories/:name', categoryController.getCategoryByName);
