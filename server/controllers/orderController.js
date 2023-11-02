@@ -53,28 +53,48 @@ exports.createOrder = async (req, res, next) => {
 };
 
 exports.updateOrder = async (req, res, next) => {
-  const { id } = req.params;
-  const { status } = req.body;
+  const { userId, id } = req.params;
+  const { totalPrice } = req.body;
 
-  const updateOrder = await orderService.updateOrder(id, status);
-
-  res.json(updateOrder);
+  try {
+    const updatedOrder = await orderService.updateOrder(userId, id, {
+      totalPrice,
+    });
+    res.json({
+      status: 200,
+      order: updatedOrder,
+    });
+  } catch (err) {
+    next(err);
+  }
 };
 
-exports.deleteOrderAll = async (req, res, next) => {
-  const { id } = req.params;
-  const { status } = req.body;
+exports.deleteAllOrder = async (req, res, next) => {
+  const { userId } = req.params;
 
-  const deleteOrderAll = await orderService.deleteOrderAll(id, status);
+  await orderService.deleteOrderAll(userId);
 
-  res.json(deleteOrderAll);
+  try {
+    res.json({
+      status: 200,
+      message: '삭제 성공',
+    });
+  } catch (err) {
+    next(err);
+  }
 };
 
-exports.deleteOrder = async (req, res, next) => {
-  const { id } = req.params;
-  const { status } = req.body;
+exports.deleteOneOrder = async (req, res, next) => {
+  const { userId, id } = req.params;
 
-  const deleteOrder = await orderService.deleteOrder(id, status);
+  await orderService.deleteOrder(userId, id);
 
-  res.json(deleteOrder);
+  try {
+    res.json({
+      status: 200,
+      message: '삭제 성공',
+    });
+  } catch (err) {
+    next(err);
+  }
 };

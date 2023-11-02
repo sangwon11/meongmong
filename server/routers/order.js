@@ -16,9 +16,12 @@ router.get('/orders/:userId/:id', orderController.getOneOrderById);
 router.post('/orders', orderController.createOrder);
 
 // 주문 수정
-router.put('/orders/:id', orderController.updateOrder);
+router.put('/orders/:userId/:id', orderController.updateOrder);
 
-// 주문 삭제
-router.delete('/orders/:id', orderController.deleteOrder);
+// 전체 주문 삭제
+router.delete('/orders/:userId', orderController.deleteAllOrder);
+
+// 특정 주문 삭제
+router.delete('/orders/:userId/:id', orderController.deleteOneOrder);
 
 module.exports = router;
