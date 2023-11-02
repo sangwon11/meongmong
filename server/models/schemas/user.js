@@ -17,7 +17,7 @@ const userSchema = new Schema(
     // 유저 이름
     name: { type: String, required: true },
     // 우편번호
-    zipcode: { type: Number, required: false },
+    zipCode: { type: Number, required: false },
     // 주소
     address: { type: String, required: false },
     // 관리자 여부

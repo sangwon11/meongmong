@@ -6,7 +6,7 @@ const dogSchema = require('./schemas/dog');
 const productSchema = require('./schemas/product');
 const suggestionSchema = require('./schemas/suggestion');
 const categorySchema = require('./schemas/category');
-const shippingAddressSchema = require('./schemas/category');
+const shippingAddressSchema = require('./schemas/shippingAddress');
 
 exports.User = mongoose.model('User', userSchema);
 exports.Order = mongoose.model('Order', orderSchema);

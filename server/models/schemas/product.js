@@ -19,6 +19,8 @@ const productSchema = new Schema(
     discount: { type: Boolean },
     // 신상여부
     isNewArrival: { type: Boolean },
+    // 제조사
+    manufacturer: { type: String, required: true },
   },
   {
     timestamps: true,
