@@ -6,45 +6,40 @@ exports.getAllProduct = async () => {
   return res;
 };
 
-exports.getProductById = async (id) => {
-  try {
-    const product = await models.Product.findOne({ id });
+exports.getProductById = async (_id) => {
+  const product = await models.Product.findOne({ _id });
 
-    if (product === null) {
-      const error = { status: 400, message: '사용자를 찾을 수 없습니다.' };
-      return error;
+  return product;
+};
+
+exports.createProduct = async ({ name, desc, category, img_url, price }) => {
+  const product = await models.Product.create({
+    name,
+    desc,
+    category,
+    img_url,
+    price,
+  });
+  return product;
+};
+
+exports.updateProduct = async (_id, name, desc, category, img_url, price) => {
+  try {
+    const data = await models.Product.updateOne(
+      { _id },
+      { name, desc, category, img_url, price },
+    );
+    if (!data.acknowledged) {
+      return { state: 200, message: '수정 실패' };
     }
-
-    return { status: 200, message: product };
-  } catch (err) {
-    throw new Error('서버 오류 입니다.');
-  }
-};
-
-// 수정해야함. kind 에 Schema.Types.ObjectId 가 들어가야함
-exports.createProduct = async (product) => {
-  console.log(product);
-  const res = await models.Product.create(product);
-  console.log(res);
-  return res;
-};
-
-exports.updateProduct = async (id, product) => {
-  try {
-    const res = await models.Product.updateOne({ id }, { product });
-    console.log(res);
-    return res;
+    return { state: 200, massage: '수정 성공' };
   } catch (error) {
     throw new Error('업데이트 할 수 없습니다.');
   }
 };
 
-exports.deleteProduct = async (id) => {
-  try {
-    const res = await models.Product.deleteOne({ id });
-    console.log(res);
-    return res;
-  } catch (err) {
-    throw new Error('삭제 할 수 없습니다.');
-  }
+exports.deleteProduct = async (_id) => {
+  const res = await models.Product.deleteOne({ _id });
+
+  return res;
 };
