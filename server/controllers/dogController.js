@@ -27,11 +27,9 @@ exports.getDogById = async (req, res, next) => {
 };
 
 exports.createDog = async (req, res, next) => {
-  const dog = req.body;
-
+  const dog = await req.body;
   try {
     await dogService.createDog(dog);
-
     res.status(200).json({
       status: 200,
       message: '등록 성공',
@@ -46,9 +44,9 @@ exports.createDog = async (req, res, next) => {
 
 exports.updateDog = async (req, res, next) => {
   const { id } = req.params;
-  const { name, size, age } = req.body;
+  const { name, age, size } = req.body;
 
-  await dogService.updateDog(id, { name, size, age });
+  await dogService.updateDog(id, { name, age, size });
 
   try {
     res.json({
