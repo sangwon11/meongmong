@@ -3,11 +3,14 @@ const orderController = require('../controllers/orderController');
 
 const router = Router();
 
-// 전체 주문 조회
+// 모든 주문 조회
 router.get('/orders', orderController.getAllOrders);
 
-// 주문 정보 조회
-router.get('/orders/:id', orderController.getOrderById);
+// 유저의 전체 주문 조회
+router.get('/orders/:userId', orderController.getAllOrdersById);
+
+// 유저의 특정 주문 조회
+router.get('/orders/:userId/:id', orderController.getOneOrderById);
 
 // 주문 생성
 router.post('/orders', orderController.createOrder);
