@@ -1,15 +1,45 @@
 const orderService = require('../services/orderService');
 
-exports.getAllOrders = async (req, res, next) => {};
+exports.getAllOrders = async (req, res, next) => {
+  const orderList = await orderService.getAllOrder();
 
-exports.getOrderById = async (req, res, next) => {};
+  res.json({
+    status: 200,
+    orderList,
+  });
+};
+
+exports.getAllOrdersById = async (req, res, next) => {
+  const { userId } = req.params;
+  try {
+    const orders = await orderService.getAllOrderById(userId);
+    res.json({
+      status: 200,
+      orders,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getOneOrderById = async (req, res, next) => {
+  const { userId, id } = req.params;
+
+  try {
+    const order = await orderService.getOneOrderById(userId, id);
+    res.json({
+      status: 200,
+      order,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
 exports.createOrder = async (req, res, next) => {
-  const order = req.body;
-  
+  const order = await req.body;
   try {
     await orderService.createOrder(order);
-
     res.status(200).json({
       status: 200,
       message: '상품 주문 성공',

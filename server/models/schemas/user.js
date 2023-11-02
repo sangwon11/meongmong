@@ -10,12 +10,6 @@ const userSchema = new Schema(
       unique: true,
       trim: true,
     },
-    // 아이디
-    uid: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     // 비밀번호
     password: {
       type: String,
@@ -27,10 +21,11 @@ const userSchema = new Schema(
       required: true,
       match: /^\d{3}-\d{3,4}-\d{4}$/,
     },
-    // 회원탈퇴 여부
+    // 계정사용 여부
     useyn: {
       type: Boolean,
       required: true,
+      default: true,
     },
     // 유저 이름
     name: {
@@ -51,20 +46,12 @@ const userSchema = new Schema(
     address: {
       type: String,
     },
+    // 주문코드
     orderId: {
       type: Schema.Types.ObjectId,
       ref: 'Order',
       required: true,
     },
-    //
-    // shippingAddress: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'ShippingAddressSchema',
-    //   },
-    // ],
-    // //
-    // shippingAddress: [ShippingAddressSchema],
   },
   {
     timestamps: true,
