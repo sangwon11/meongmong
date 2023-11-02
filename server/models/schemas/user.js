@@ -4,54 +4,26 @@ const { Schema } = require('mongoose');
 const userSchema = new Schema(
   {
     // 유저 이메일
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
+    email: { type: String, required: true, unique: true },
     // 비밀번호
-    password: {
-      type: String,
-      required: true,
-    },
+    password: { type: String, required: true },
     // 전화번호
     phone: {
       type: Number,
       required: true,
       match: /^\d{3}-\d{3,4}-\d{4}$/,
-    },
-    // 계정사용 여부
-    useyn: {
-      type: Boolean,
-      required: true,
-      default: true,
+      unique: true,
     },
     // 유저 이름
-    name: {
-      type: String,
-      required: true,
-    },
-    // 관리자 여부
-    isAdmin: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
+    name: { type: String, required: true },
     // 우편번호
-    zipCode: {
-      type: String,
-    },
+    zipcode: { type: Number, required: false },
     // 주소
-    address: {
-      type: String,
-    },
-    // 주문코드
-    orderId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Order',
-      required: true,
-    },
+    address: { type: String, required: false },
+    // 관리자 여부
+    isAdmin: { type: Boolean, default: false, required: true },
+    // 회원탈퇴 여부
+    useyn: { type: Boolean, default: false, required: true },
   },
   {
     timestamps: true,

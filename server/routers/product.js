@@ -4,18 +4,18 @@ const productController = require('../controllers/productController');
 const router = Router();
 
 // 전체 상품 조회
-router.get('/product', productController.getAllProducts);
+router.get('/products', productController.getAllProducts);
 
 // 상품 상세 조회
-router.get('/product/:id', productController.getProductByID);
+router.get('/products/:id', productController.getProductById);
 
 // 상품 생성
-router.post('/product', productController.createProduct);
+router.post('/products', productController.createProduct);
 
 // 상품 수정
-router.put('/product/:id', productController.updateProduct);
+router.put('/products/:id', productController.updateProduct);
 
 // 상품 삭제
-router.delete('/product/:id', productController.deleteProduct);
+router.delete('/products/:id', productController.deleteProduct);
 
 module.exports = router;
