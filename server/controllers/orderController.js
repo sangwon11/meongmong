@@ -37,12 +37,19 @@ exports.getOneOrderById = async (req, res, next) => {
 };
 
 exports.createOrder = async (req, res, next) => {
-  const order = await req.body;
   try {
-    await orderService.createOrder(order);
+    const { id, totalPrice, userId, products, shippingAddress } = req.body;
+    const carts = await orderService.createOrder({
+      id,
+      totalPrice,
+      userId,
+      products,
+      shippingAddress,
+    });
+
     res.status(200).json({
       status: 200,
-      message: '상품 주문 성공',
+      carts,
     });
   } catch (error) {
     res.status(500).json({
@@ -87,9 +94,9 @@ exports.deleteAllOrder = async (req, res, next) => {
 exports.deleteOneOrder = async (req, res, next) => {
   const { userId, id } = req.params;
 
-  await orderService.deleteOrder(userId, id);
-
   try {
+    await orderService.deleteOrder(userId, id);
+
     res.json({
       status: 200,
       message: '삭제 성공',

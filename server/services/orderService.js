@@ -40,9 +40,27 @@ exports.getOneOrderById = async (userId, id) => {
   }
 };
 
-exports.createOrder = async (order) => {
-  const res = await models.Order.create(order);
-  return res;
+// 주문하기
+exports.createOrder = async ({
+  id,
+  totalPrice,
+  userId,
+  products,
+  shippingAddress,
+}) => {
+  try {
+    const createdOrder = await models.Order.create({
+      id,
+      totalPrice,
+      userId,
+      products,
+      shippingAddress,
+    });
+
+    return createdOrder;
+  } catch (err) {
+    throw new Error('주문 생성 중에 오류가 발생했습니다.');
+  }
 };
 
 exports.updateOrder = async (userId, id, updateData) => {
@@ -80,7 +98,7 @@ exports.deleteOrderAll = async (userId) => {
 // 주문 개별 삭제
 exports.deleteOrder = async (userId, id) => {
   try {
-    const order = await models.Order.deleteOne({ userId, id });
+    const order = await models.Order.deleteOne({ userId: userId, id: id });
     return order;
   } catch (err) {
     throw new Error('삭제 할 수 없습니다.');
