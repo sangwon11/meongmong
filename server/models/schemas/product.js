@@ -22,6 +22,7 @@ const productSchema = new Schema(
   },
   {
     timestamps: true,
+    strictPopulate: false,
   },
 );
 

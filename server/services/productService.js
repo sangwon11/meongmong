@@ -12,6 +12,18 @@ exports.getProductById = async (_id) => {
   return product;
 };
 
+exports.getProductByCategoryName = async (name) => {
+  const products = await models.Product.find({})
+    .populate({
+      path: 'category',
+      match: { name },
+    })
+    .exec();
+
+  const filteredProducts = products.filter((product) => product.category);
+  return filteredProducts;
+};
+
 exports.createProduct = async ({ name, desc, category, img_url, price }) => {
   const product = await models.Product.create({
     name,
