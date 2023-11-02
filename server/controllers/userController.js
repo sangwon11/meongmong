@@ -9,23 +9,46 @@ exports.getAllUsers = async (req, res, next) => {
   }
 };
 
-exports.getUserById = async (req, res, next) => {};
+exports.getUserById = async (req, res, next) => {
+  const { id } = req.params;
+
+  const data = await userService.getUserById(id);
+
+  res.status(200).json({ status: 200, message: data });
+};
 
 exports.createUser = async (req, res, next) => {
   const user = req.body;
 
   try {
-    const status = await userService.createUser({
+    const result = await userService.createUser({
       ...user,
       phone: parseInt(user.phone),
     });
 
-    res.status(201).json(status);
+    if (!result) {
+      res.status(400).json({});
+    }
+
+    res.status(201).json(result);
   } catch (err) {
     next(err);
   }
 };
 
-exports.updateUser = async (req, res, next) => {};
+exports.updateUser = async (req, res, next) => {
+  const { id } = req.params;
+  const { phone, name } = req.body;
 
-exports.deleteUser = async (req, res, next) => {};
+  const data = await userService.updateUser(id, phone, name);
+
+  res.status(200).json(data);
+};
+
+exports.deleteUser = async (req, res, next) => {
+  const { id } = req.params;
+
+  const data = await userService.deleteUser(id);
+
+  res.json(data);
+};
