@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const productController = require('../controllers/productController');
+const { isAdmin } = require('../middleware/isAdmin');
 
 const router = Router();
 
@@ -15,12 +16,12 @@ router.get(
 );
 
 // 상품 생성
-router.post('/products', productController.createProduct);
+router.post('/products', isAdmin, productController.createProduct);
 
 // 상품 수정
-router.put('/products/:id', productController.updateProduct);
+router.put('/products/:id', isAdmin, productController.updateProduct);
 
 // 상품 삭제
-router.delete('/products/:id', productController.deleteProduct);
+router.delete('/products/:id', isAdmin, productController.deleteProduct);
 
 module.exports = router;

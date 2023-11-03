@@ -6,6 +6,7 @@ const userRouter = require('./routers/user');
 const orderRouter = require('./routers/order');
 const dogRouter = require('./routers/dog');
 const gategoryRouter = require('./routers/category');
+const authRouter = require('./routers/auth');
 
 const connectDB = require('./db/mongoose');
 
@@ -26,6 +27,7 @@ app.use('/api/v1', userRouter);
 app.use('/api/v1', orderRouter);
 app.use('/api/v1', dogRouter);
 app.use('/api/v1', gategoryRouter);
+app.use('/api/v1', authRouter);
 
 app.get('/', (req, res) => {
   res.send('hello pm2 wow');
@@ -36,7 +38,7 @@ app.use((err, req, res, next) => {
   console.log('에러 핸들러 함수입니다.');
   res.json({
     status: 404,
-    message: err && err.message,
+    message: err,
   });
 });
 
