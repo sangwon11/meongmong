@@ -25,3 +25,9 @@ exports.login = async (req, res, next) => {
     next(err.message);
   }
 };
+
+exports.logout = async (req, res, next) => {
+  const { name } = req.user;
+
+  res.json({ message: `${name}님 안녕히 가세요~` });
+};
