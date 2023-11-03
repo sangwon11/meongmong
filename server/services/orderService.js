@@ -1,9 +1,8 @@
 const models = require('../models/index');
 
 // 전체 주문 조회
-exports.getAllOrderById = async () => {
-  const order = await models.Order.findById({});
-  return order;
+exports.getAllOrder = async () => {
+  return await models.Order.find({});
 };
 
 // 유저 주문 조회
@@ -27,7 +26,7 @@ exports.getAllOrderById = async (userId) => {
 // 유저 특정 주문 조회
 exports.getOneOrderById = async (userId, id) => {
   try {
-    const order = await models.Order.findOne({ userId, id });
+    const order = await models.Order.findOne({ userId, _id: id });
     if (!order) {
       const error = {
         status: 400,
