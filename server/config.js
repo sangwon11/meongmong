@@ -24,7 +24,7 @@ const config = {
     saltRounds: isRequired('BCRYPT_SALT_ROUNDS'),
   },
   jwt: {
-    scretKey: isRequired('JWT_SCRET_KEY'),
+    secretKey: isRequired('JWT_SCRET_KEY'),
     expiresSec: isRequired('JWT_EXPIRES_SEC'),
   },
 };

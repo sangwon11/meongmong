@@ -1,11 +1,12 @@
 const models = require('../models/index');
 
-exports.getAllOrder = async () => {
-  const res = await models.Order.find({});
-
-  return res;
+// 전체 주문 조회
+exports.getAllOrderById = async () => {
+  const order = await models.Order.findById({});
+  return order;
 };
 
+// 유저 주문 조회
 exports.getAllOrderById = async (userId) => {
   try {
     const orders = await models.Order.find({ userId });
@@ -23,6 +24,7 @@ exports.getAllOrderById = async (userId) => {
   }
 };
 
+// 유저 특정 주문 조회
 exports.getOneOrderById = async (userId, id) => {
   try {
     const order = await models.Order.findOne({ userId, id });
@@ -63,6 +65,7 @@ exports.createOrder = async ({
   }
 };
 
+// 주문 수정하기
 exports.updateOrder = async (userId, id, updateData) => {
   try {
     const order = await models.Order.findOneAndUpdate(

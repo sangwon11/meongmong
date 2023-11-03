@@ -11,12 +11,12 @@ exports.isAdmin = async function (req, res, next) {
   const token = header.split(' ')[1];
 
   try {
-    const decoded = jwt.verify(token, config.jwt.scretKey);
+    const decoded = jwt.verify(token, config.jwt.secretKey);
 
     if (!decoded.isAdmin) {
       return res
         .status(401)
-        .json({ status: 401, mesesage: '당신은 접근 권한이 없습니다.' });
+        .json({ status: 401, message: '당신은 접근 권한이 없습니다.' });
     }
 
     next();
