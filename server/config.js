@@ -20,6 +20,13 @@ const config = {
     user: isRequired('MONGO_USER'),
     pass: isRequired('MONGO_PASS'),
   },
+  bcrypt: {
+    saltRounds: isRequired('BCRYPT_SALT_ROUNDS'),
+  },
+  jwt: {
+    scretKey: isRequired('JWT_SCRET_KEY'),
+    expiresSec: isRequired('JWT_EXPIRES_SEC'),
+  },
 };
 
 module.exports = config;
