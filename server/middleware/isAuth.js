@@ -18,7 +18,7 @@ exports.isAuth = async function (req, res, next) {
     if (!user) {
       return res.status(401).json({ message: 'Authorization 오류 입니다.' });
     }
-    req.userId = user._id.toString();
+    req.user = user;
     next();
   } catch (err) {
     if (err.message.includes('expired')) next('토큰 기한이 만료 되었습니다.');
