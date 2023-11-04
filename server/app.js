@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const config = require('./config');
 
 const productRouter = require('./routers/product');
@@ -14,6 +15,9 @@ const app = express();
 
 // 데이터베이스 연결
 connectDB();
+
+// cors 설정
+app.use(cors());
 
 // request body를 json 형태로 파싱해준다.
 app.use(express.json());
