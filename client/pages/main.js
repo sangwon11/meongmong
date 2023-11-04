@@ -1,25 +1,37 @@
-import '../style.css'
+import '../style.css';
 import '../index.css';
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+export function init() {
+  document.querySelector('#header-wrapper').innerHTML = `<header
+  class=" w-full h-[80px] px-20 py-5 flex justify-between items-center shadow-sm  fixed left-0 top-0 bg-white border-b border-zinc-300 z-[100]"
+  >
+  <h1 class="w-30 text-center text-lg"><a href="/">멍뭉이들</a></h1>
+  
+  <div class="flex-1 mx-5">
+    <input
+      class="hidden w-full max-w-sm mx-auto border rounded-full py-2 px-4 outline-none md:block"
+      type="text"
+      placeholder="test"
+    />
   </div>
-`
+  
+  <div class="">
+    <ul class="flex gap-10">
+      <li class="hover:text-gray-400">
+        <a href="/login/">로그인</a>
+      </li>
+      <li class="hover:text-gray-400">
+        <a href="/signup/">회원가입</a>
+      </li>
+      <li class="hover:text-gray-400">
+        <a href="/cart/">장바구니</a>
+      </li>
+    </ul>
+  </div>
+  </header>`;
+}
 
-setupCounter(document.querySelector('#counter'))
+// document.querySelector('#footer').innerHTML = ``;
+window.addEventListener('DOMContentLoaded', () => {
+  init();
+});
