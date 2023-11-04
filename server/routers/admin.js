@@ -1,33 +1,38 @@
 const { Router } = require('express');
-const orderController = require('../controllers/orderController');
+const adminOrderController = require('../controllers/adminOrderController');
 const { isAdmin } = require('../middleware/isAdmin');
 
 const router = Router();
 
-// 관리자의 모든 유저 주문 조회
-router.get('/admins/orders', isAdmin, orderController.getAllOrders);
+// 모든 유저 주문 정보 조회
+router.get('/admins/orders', isAdmin, adminOrderController.getAllOrders);
 
-// 관리자의 유저 주문 조회
-router.get('/admins/orders/:userId', isAdmin, orderController.getAllOrdersById);
-
-// 관리자의 유저 특정 주문 조회
+// 특정 유저의 모든 주문 조회
 router.get(
-  '/admins/orders/:userId/:id',
+  '/admins/users/:userId/orders',
   isAdmin,
-  orderController.getOneOrderById,
+  adminOrderController.getAllOrdersByUserId,
 );
 
-// 관리자의 유저 주문 수정
-router.put('/admins/orders/:userId/:id', isAdmin, orderController.updateOrder);
-
-// 관리자의 유저 주문 삭제
-router.delete('/admins/orders/:userId', isAdmin, orderController.deleteAllOrder);
-
-// 관리자의 유저 특정 주문 삭제
-router.delete(
-  '/admins/orders/:userId/:id',
+// 특정 주문 조회
+router.get(
+  '/admins/orders/:orderId',
   isAdmin,
-  orderController.deleteOneOrder,
+  adminOrderController.getOrdersByOrderId,
+);
+
+// 특정 주문 수정
+router.put(
+  '/admins/orders/:orderId',
+  isAdmin,
+  adminOrderController.updateOrderByOrderId,
+);
+
+// 특정 주문 삭제
+router.delete(
+  '/admins/orders/:orderId',
+  isAdmin,
+  adminOrderController.deleteOrderByOrderId,
 );
 
 module.exports = router;

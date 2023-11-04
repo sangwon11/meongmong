@@ -6,9 +6,13 @@ exports.getAllUsers = async () => {
 };
 
 exports.getUserById = async (_id) => {
-  const user = await models.User.findOne({ _id });
+  try {
+    const user = await models.User.findOne({ _id });
 
-  return user;
+    return user;
+  } catch (err) {
+    throw new Error(err);
+  }
 };
 
 exports.createUser = async (user) => {
