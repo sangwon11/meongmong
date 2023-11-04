@@ -14,7 +14,7 @@ exports.getUserById = async (req, res, next) => {
     const { id } = req.params;
 
     const user = await userService.getUserById(id);
-    console.log(user);
+
     if (!user) {
       res
         .status(404)
