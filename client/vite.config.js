@@ -1,7 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+import multiInput from "rollup-plugin-multi-input";
+export default {
+    root: 'pages',
+    publicDir: '../public',
+    build: {
+        outDir: '../dist',
+        rollupOptions: {
+            input: [
+              'pages/**/*.html'
+            ],
+            plugins: [multiInput.default()],
+        }
+    },
+    server: {
+        port: 8080,
+    }
+}

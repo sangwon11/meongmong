@@ -5,6 +5,7 @@ server/node_modules
 ### dotenv ###
 /server/.env
 /client/.env
+/client/pages/.env
 client/dist
 ### macOS ###
 # General
@@ -28,3 +29,5 @@ lerna-debug.log*
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+.vscode
