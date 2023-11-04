@@ -10,11 +10,21 @@ exports.getAllUsers = async (req, res, next) => {
 };
 
 exports.getUserById = async (req, res, next) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  const data = await userService.getUserById(id);
+    const user = await userService.getUserById(id);
+    console.log(user);
+    if (!user) {
+      res
+        .status(404)
+        .json({ status: 404, message: '유저를 찾을 수 없습니다.' });
+    }
 
-  res.status(200).json({ status: 200, message: data });
+    res.status(200).json({ status: 200, message: user });
+  } catch (err) {
+    next(err);
+  }
 };
 
 exports.createUser = async (req, res, next) => {
