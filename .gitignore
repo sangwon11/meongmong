@@ -5,6 +5,7 @@ server/node_modules
 ### dotenv ###
 /server/.env
 /client/.env
+/client/pages/.env
 client/dist
 ### macOS ###
 # General
