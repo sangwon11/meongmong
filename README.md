@@ -1,50 +1,85 @@
-### 구현과제
+# 강아지 전용 용품 판매 사이트 - 멍뭉 (MEONG MUNG)
 
-- 사용자 관련 기능
-  - [x] 회원가입 - 회원가입 폼의 입력 값이 조건에 안 맞을 시 (이메일 형식, 비밀번호와 비밀번호확인의 일치 여부 등) 이를 사용자에게 알려준다.
-  - [x] 회원가입 - 조건에 맞게 입력 후 제출 버튼을 누를 시, 백엔드 서버와 연결되어 회원가입 정보가 db에 저장된다.
-  - [x] 로그인 - 로그인 폼의 입력 값이 조건에 안 맞을 시 (이메일 형식이 안 맞거나, 비밀번호가 틀리거나 등) 이를 사용자에게 알려준다.
-  - [x] 로그인 - db에 저장된 정보로 로그인 성공 시, JWT 토큰이 프론트 단(sessionStorage, localStorage 등)에 저장되고, 다른 페이지(랜딩페이지, 상품페이지 등)로 이동한다.
-  - [x] 로그아웃 - 로그아웃 시, 프론트 단에 저장되어 있던 JWT토큰이 제거된다.
-  - [x] 사용자 정보 조회 - 사용자는 개인 페이지에서 자신의 회원 정보를 조회할 수 있다.
-  - [x] 사용자 정보 수정 - 사용자는 개인 페이지에서 자신의 회원 정보를 수정할 수 있다.
-  - [X] 사용자 정보 삭제 - 사용자는 개인 페이지에서 자신의 회원 정보를 삭제(탈퇴)할 수 있다.
-  - [x] 관리자 기능 - 관리자 계정이 존재하며, 일반 사용자 계정과 구분된다.
-  - [x] 사용자 정보 - db에 사용자의 이메일, 이름, 비밀번호(해쉬화된 문자열), 주소를 저장할 수 있다.
-- 상품(제품) 관련 기능
-  - [x] 카테고리 조회 - 사용자가 카테고리 목록을 화면에서 확인할 수 있다.
-  - [x] 카테고리 추가 - 관리자는 관리자 페이지에서, 상품이 속할 카테고리를 추가할 수 있다.
-  - [x] 카테고리 수정 - 관리자는 관리자 페이지에서, 상품이 속할 카테고리 관련 데이터 (카테고리 이름 등)를 수정할 수 있다.
-  - [x] 카테고리 삭제 - 관리자는 관리자 페이지에서, 상품이 속할 카테고리 관련 데이터를 삭제할 수 있다.
-  - [x] 상품 추가 - 관리자는 관리자 페이지에서 상품을 추가할 수 있다.
-  - [x] 상품 수정 - 관리자는 관리자 페이지에서 상품 관련 데이터를 수정할 수 있다.
-  - [x] 상품 삭제 - 관리자는 관리자 페이지에서 상품 관련 데이터를 삭제할 수 있다.
-  - [x] 상품 정보 - 상품은 특정 카테고리에 속해 있다.
-  - [x] 상품 목록 - 사용자가 특정 카테고리를 선택할 시, 해당 카테고리에 속한 상품 목록이 화면에 나타난다.
-  - [x] 상품 상세 - 사용자가 특정 상품을 선택할 시, 해당 상품의 상세 정보가 화면에 나타난다.
-  - [x] 상품 정보 - db에 상품의 이름, 가격, 설명, 제조사를 저장할 수 있다.
-- 장바구니 관련 기능
-  - [x] 장바구니 관련 데이터는 백엔드 데이터베이스가 아닌, 프론트단(localStorage, sessionStorage, indexedDB 등)에서 관리된다.
-  - [x] 프론트 단에, 장바구니에 속한 상품 관련 데이터가 저장되어서, 페이지를 새로고침해도 장바구니에 상품들이 그대로 남아 있다.
-  - [x] 장바구니 추가 - 사용자는 상품을 장바구니에 추가할 수 있다.
-  - [x] 장바구니 수정 - 사용자는 장바구니에 속한 상품의 수량을 수정할 수 있다.
-  - [x] 장바구니 전체 삭제 - 사용자는 장바구니에서, 버튼 1번의 클릭으로, 장바구니 상의 전체 상품을 제거할 수 있다.
-  - [x] 장바구니 부분 삭제 - 사용자는 장바구니에서, 일부 상품을 골라서 제거할 수 있다.
-  - [x] 장바구니 조회 - 사용자는 장바구니에 담긴 상품 목록을 확인할 수 있다.
-  - [x] 장바구니 가격 조회 - 사용자는 장바구니에 담긴 상품들의 총 가격을 확인할 수 있다.
-- 주문 관련 기능
-  - [x] 주문 추가 - 사용자는 장바구니에 속한 상품의 수량을 변경할 수 있다.
-  - [x] 주문 수정 - 관리자는 사용자의 주문 내역에서 배송 상태를 수정할 수 있다.
-  - [X] 주문 수정 - 사용자는 주문 완료 후 배송이 시작되기 전까지 주문 정보를 수정할 수 있다.
-  - [x] 주문 완료 - 주문 완료 시, 주문 완료 페이지로 이동한다.
-  - [x] 주문 조회 - 사용자는 개인 페이지에서 자신의 주문 내역을 조회할 수 있다.
-  - [X] 주문 조회 - 관리자는 관리 페이지에서 사용자들의 주문 내역을 조회할 수 있다.
-  - [x] 주문 취소 - 사용자는 개인 페이지에서 자신의 주문 내역을 취소할 수 있다.
-  - [x] 주문 삭제 - 관리자는 관리 페이지에서 사용자들의 주문 내역을 삭제할 수 있다.
-  - [x] 주문 정보 - db에 배송 상태가 저장된다.
-  - [x] 주문 정보 - db에 배송지 정보, 주문 총액, 수령자 이름 및 연락처가 저장된다.
-- 추가 관리자 관련 기능
-  - [ ] 상품 정보 - 관리자는 상품의 추천 견종과 나이를 입력해 저장할 수 있다.
-  - [ ] 상품 정보 - 관리자는 상품 목록을 페이지네이션 형식으로 조회할 수 있다.
-  - [ ] 주문 정보 - 관리자는 주문 목록을 페이지네이션 형식으로 조회할 수 있다.
+<img src="./client/public/images/banner1.png">
 
+<br />
+
+# 👀 서비스 링크 
+
+### [멍뭉 (MEONG MUNG)](http://kdt-sw-7-team06.elicecoding.com/)
+
+<br />
+
+# 🎉 서비스 소개 
+### 환영합니다! 저희는 강아지를 처음 키우시는 분들 에게 맞춤형 서비스를 제공하고 있습니다. 
+저희 사이트는 사용자의 강아지에 대한 기본 정보를 바탕으로 최적의 상품을 추천합니다.
+강아지의 나이, 품종, 크기 밒 건강 상태와 같은 정보를 입력하시면, 저희는 이 데이터를 활용해 각각의 필요에 가장 적합한 제품을 선별여 추천 카테고리에 제안합니다.
+
+
+<br />
+
+# ✨ 주요 기능
+
+### 1. 상품 추천 기능
+
+### 2. 여러 배송지 관리 기능
+
+### 3. 반응형 웹 페이지 
+
+<br />
+
+## 🗓️ 프로젝트 기간
+
+2023.10.30(월) ~ 2023.11.12(일)
+
+# 🥁 기술 스택
+
+### Backend
+<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white"/>
+<img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white"/>
+<img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"/>
+<img src="https://img.shields.io/badge/Mongoose-880000?style=flat-square&logo=mongoose&logoColor=white"/>
+
+### Frontend
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=white"/>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
+<img src="https://img.shields.io/badge/tailwindcss-1572B6?style=flat-square&logo=tailwindcss&logoColor=white"/>
+
+
+### Infrastructure
+<img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"/>
+<img src="https://img.shields.io/badge/PM2-2B037A?style=flat-square&logo=pm2&logoColor=white"/>
+<img src="https://img.shields.io/badge/NGINX-009639?style=flat-square&logo=nginx&logoColor=white"/>
+
+### 협업 툴
+<img src="https://img.shields.io/badge/Gitlab-FC6D26?style=flat-square&logo=gitlab&logoColor=white"/>
+<img src="https://img.shields.io/badge/Figma-0C8CE9?style=flat-square&logo=figma&logoColor=white"/>
+<img src="https://img.shields.io/badge/Notion-FFFFFF?style=flat-square&logo=notion&logoColor=black"/>
+<img src="https://img.shields.io/badge/GoogleSheets-34A853?style=flat-square&logo=googlesheets&logoColor=white"/>
+
+<br />
+<br />
+
+# 💡 개발 기획
+
+### [페르소나](https://powerful-lamprey-ff8.notion.site/e0151c1609d341049e782c5eea1d765e?pvs=4)
+
+### [기능 명세서](https://powerful-lamprey-ff8.notion.site/a51faeb489a64261b0c1a8fd6fc7c0ad?v=c173ef4fe0024b25a12343c69436afc1&pvs=4)
+
+### [API 명세서](https://docs.google.com/spreadsheets/d/1LqkCV7YfaV5iB-aKls27ZKXOTpCMf13k6AHyenMrOFU/edit?usp=sharing)
+
+### [ERD 문서](https://www.erdcloud.com/d/tr3ez4Mp5Rkc6t8Zu)
+
+### [Figma 와이어프레임](https://www.figma.com/file/uuNNVnJPOL79d7wsaKdsXB/Untitled?type=design&node-id=0%3A1&mode=design&t=IayrWPxWn7Y4I1Mc-1)
+
+<br />
+
+
+
+# 🐶 멍뭉이들 (Members)
+
+### - 구기윤 [ BE ], [ FE ]
+### - 강한나 [ BE ], [ FE ]
+### - 홍소현 [ FE ]
+### - 채유림 [ FE ]
+### - 윤성원 [ FE ]

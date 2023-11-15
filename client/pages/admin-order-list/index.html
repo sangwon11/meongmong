@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>멍뭉-관리자 주문관리</title>
+     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+ </head>
+  <body class="h-screen overflow-x-hidden">
+    <div id="header-wrapper"></div>
+    <section class="py-24 h-screen">
+      <div class="px-4 py-4 mx-auto max-w-7xl lg:py-4 md:px-6">
+        <h2 class="mb-4 text-2xl font-bold">주문조회</h2>
+        <table
+          class="w-full table-auto bg-white px-4 border-t-2 border-b-2 border-gray-300"
+        >
+          <thead class="bg-teal-500 text-white">
+            <tr>
+              <th class="px-4 py-2 text-center">
+                <input type="checkbox" name="order" value="selectall" />
+              </th>
+              <th class="px-4 py-2 text-center">날짜</th>
+              <th class="px-4 py-2 text-center">사용자정보</th>
+              <th class="px-4 py-2 text-center">주문코드</th>
+              <th class="px-4 py-2 text-center">상태</th>
+            </tr>
+          </thead>
+          <tbody id="order_list"></tbody>
+        </table>
+        <div class="py-7 flex items-center justify-center relative">
+          <div id="pages" class="flex justify-center">
+              <input type="radio" id="1" name="page" class="hidden peer">
+              <label for="1" class="peer-checked:text-teal-600" checked>1</label>
+              </input>
+            </div>
+          <div class="absolute right-0">
+            <button
+              id="deleteBtn"
+              type="button"
+              class="focus:outline-none text-teal-600 border-2 border-teal-600 focus:ring-1 ring-teal-600 font-semibold rounded-lg text-xs w-24 h-10 p-2 dark:bg-teal-500 dark:hover:bg-teal-500 dark:focus:ring-teal-600"
+            >
+              주문취소
+            </button>
+         </div>
+      </div>
+      </div>
+    </section>
+    </body>
+    <div id='footer' class='border-t-2 bg-gray-50'></div>
+    </html>
+<script type="module" src="./adminOrderlist.js"></script>

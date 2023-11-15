@@ -1,12 +1,21 @@
 const productService = require('../services/productService');
 
 exports.getAllProducts = async (req, res, next) => {
-  const productList = await productService.getAllProduct();
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const perPage = 9;
 
-  res.json({
-    status: 200,
-    productList,
-  });
+    const result = await productService.getAllProduct(page, perPage);
+
+    res.json({
+      status: 200,
+      products: result.products,
+      page: result.page,
+      totalPages: result.totalPages,
+    });
+  } catch (err) {
+    next(err);
+  }
 };
 
 exports.getProductById = async (req, res, next) => {
@@ -15,10 +24,10 @@ exports.getProductById = async (req, res, next) => {
 
     const product = await productService.getProductById(id);
 
-    if (product === null) {
+    if (!product) {
       return res
         .status(400)
-        .json({ status: 400, message: '사용자를 찾을 수 없습니다.' });
+        .json({ status: 400, message: '해당 상품을 찾을 수 없습니다.' });
     }
 
     res.json(product);
@@ -27,31 +36,17 @@ exports.getProductById = async (req, res, next) => {
   }
 };
 
-exports.getProductByCategoryName = async (req, res, next) => {
-  const { name } = req.params;
-
-  const product = await productService.getProductByCategoryName(name);
-  res.status(200).json({ products: product });
-};
-
 exports.createProduct = async (req, res, next) => {
   try {
-    const { name, desc, category, img_url, price } = req.body;
+    const productProps = req.body;
 
-    const product = await productService.createProduct({
-      name,
-      desc,
-      category,
-      img_url,
-      price,
-    });
+    await productService.createProduct(productProps);
 
     res.status(200).json({
       status: 200,
       message: '상품 등록 성공',
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json({
       status: 500,
       message: '서버 오류 입니다.',
@@ -62,28 +57,37 @@ exports.createProduct = async (req, res, next) => {
 exports.updateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { name, desc, category, img_url, price } = req.body;
+    const productProps = req.body;
 
-    const status = await productService.updateProduct(
-      id,
-      name,
-      desc,
-      category,
-      img_url,
-      price,
-    );
-
-    res.json(status);
+    const status = await productService.updateProduct(id, productProps);
+    res.status(200).json({
+      status: 200,
+      message: '상품 수정 성공',
+    });
   } catch (err) {
     next(err);
   }
 };
+
+exports.deleteAllProducts = async (req, res, next) => {
+  try {
+    const { list } = req.body;
+    const status = await productService.deleteAllProducts(list);
+    res.status(200).json({
+      status: 200,
+      message: '상품 삭제 성공',
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.deleteProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
     const product = await productService.getProductById(id);
 
-    if (product == null) {
+    if (product === null) {
       return res
         .status(404)
         .json({ status: 404, message: '해당 상품이 존재하지 않습니다.' });
@@ -91,7 +95,10 @@ exports.deleteProduct = async (req, res, next) => {
 
     const status = await productService.deleteProduct(product);
 
-    res.json(status);
+    res.status(200).json({
+      status: 200,
+      message: '상품 삭제 성공',
+    });
   } catch (err) {
     next(err);
   }
