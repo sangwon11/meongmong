@@ -9,6 +9,7 @@ const dogRouter = require('./routers/dog');
 const categoryRouter = require('./routers/category');
 const authRouter = require('./routers/auth');
 const adminRouter = require('./routers/admin');
+const addressRouter = require('./routers/address');
 
 const connectDB = require('./db/mongoose');
 
@@ -34,6 +35,7 @@ app.use('/api/v1', dogRouter);
 app.use('/api/v1', categoryRouter);
 app.use('/api/v1', authRouter);
 app.use('/api/v1', adminRouter);
+app.use('/api/v1', addressRouter);
 
 app.get('/', (req, res) => {
   res.send('hello pm2 wow');
@@ -41,8 +43,6 @@ app.get('/', (req, res) => {
 
 // 에러 핸들러 추가
 app.use((err, req, res, next) => {
-  console.log('에러 핸들러 함수입니다.');
-
   res.json({
     status: 404,
     message: err.message || err,

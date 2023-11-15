@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>멍뭉-회원관리</title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+ </head>
+  <body>
+    <div id="header-wrapper"></div>
+
+    <section class="bg-gray-50">
+      <div
+        class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0"
+      >
+        <div
+          class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
+        >
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1
+            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl"
+          >
+            회원정보 관리
+          </h1>
+
+          <form class="space-y-4 md:space-y-6" >
+            <div>
+             <label
+             for="name"
+             class="block mb-2 text-sm font-medium text-gray-900"
+             >이름</label
+           >
+           <input
+           type="text"
+           name="name"
+           id="name"
+           class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+           placeholder="username"
+           required
+         />
+                  </div>
+
+                  <div>
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900" >비밀번호</label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      maxlength="10"
+                    />
+                  </div>
+
+                  <div class="md:col-span-5">
+                    <label for="password">비밀번호 확인</label>
+                    <input
+                      type="password"
+                      name="pwCheck"
+                      id="pwCheck"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      maxlength="10"
+                    />&nbsp;&nbsp;<span id="same"></span>
+                  </div>
+
+                  <div>
+                    <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >이메일</label
+                >
+                    <input
+                      type="text"
+                      name="email"
+                      id="email"
+                      class="bg-gray-50 border border-gray-300 text-slate-400 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                      disabled
+                      placeholder="email@domain.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                    for="number"
+                    class="block mb-2 text-sm font-medium text-gray-900"
+                    >전화번호</label
+                  >
+                    <input
+                      type="text"
+                      name="phone"
+                      id="phone"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      value=""
+                      
+                    />
+                  </div>
+                  <input id="_id" class="hidden" type="text" />
+                  <div class="md:col-span-5 text-right">
+                    <div class="inline-flex items-end">
+                      <button
+                        type="submit"
+                        id="save"
+                        class="save bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      >
+                        저장
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='footer' class='border-t-2 bg-gray-50'></div>
+  </body>
+</html>
+<script type="module" src="./edit.js"></script>
